@@ -1,0 +1,31 @@
+name: Dependabot
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Build project
+        run: mvn package
+      - name: Notify Slack
+        uses: rtCamp/action-slack-notify@master
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+        with:
+          status: ${{ job.status }}
+          message: "Pull request generated for dependency updates"
+          author_name: ${{ github.event.pull_request.user.login }}
+          author_icon: ${{ github.event.pull_request.user.avatar_url }}
+          title: ${{ github.event.pull_request.title }}
+          pull_request_url: ${{ github.event.pull_request.html_url }}
+          branch: ${{ github.event.pull_request.head.ref }}
+          repo: ${{ github.repository }}
