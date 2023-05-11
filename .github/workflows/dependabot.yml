@@ -18,4 +18,4 @@ jobs:
           # The webhook url for your Incoming Webhook connector
           webhook: ${{secrets.TEAMSWEBHOOK_URL}}
           # The message you want to send to your Microsoft Teams channel
-          message: format('Pull request generated for dependency updates dependabot Repository {0} {1} ', ${{ github.repository }},${{ github.event.pull_request.title }})     
+          message: format('Pull request generated for dependency updates dependabot Repository {0}', ${{ github.repository }})     
