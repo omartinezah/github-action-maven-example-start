@@ -7,7 +7,7 @@ on:
     types: [opened, synchronize]
 env:
   MY_WORKFLOW_VAR: 'Pull request generated for dependency updates dependabot Repository '
-  WH_URL: ${{secrets.TEAMSWEBHOOK_URL}}
+  WH_URL: 'https://softserveinc.webhook.office.com/webhookb2/bbf25948-b594-4365-89eb-5612f6013262@6c51c659-9d52-41af-81f7-dde16380e813/IncomingWebhook/86f1b27116a64aa487a5aaa948d88b63/9d48cbfa-9c54-4ece-89dd-5ced8eccffe4'
 jobs:
   notify:
     runs-on: ubuntu-latest
