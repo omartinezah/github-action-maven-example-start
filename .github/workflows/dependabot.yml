@@ -5,7 +5,8 @@ on:
     types: [dependabot]
   pull_request:
     types: [opened, synchronize]
-
+env:
+  MY_WORKFLOW_VAR: 'Pull request generated for dependency updates dependabot Repository '
 jobs:
   notify:
     runs-on: ubuntu-latest
@@ -18,4 +19,4 @@ jobs:
           # The webhook url for your Incoming Webhook connector
           webhook: ${{secrets.TEAMSWEBHOOK_URL}}
           # The message you want to send to your Microsoft Teams channel
-          message: format('Pull request generated for dependency updates dependabot Repository {0}', ${{ github.repository }})     
+          message: env.MY_WORKFLOW_VAR ${{ github.repository }}   
