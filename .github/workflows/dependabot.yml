@@ -19,4 +19,4 @@ jobs:
           # The webhook url for your Incoming Webhook connector
           webhook: ${{secrets.TEAMSWEBHOOK_URL}}
           # The message you want to send to your Microsoft Teams channel
-          message: env.MY_WORKFLOW_VAR ${{ github.repository }}   
+          message: ${{ env.MY_WORKFLOW_VAR }} ${{ github.repository }}   
